@@ -31,13 +31,10 @@ pipeline {
                 }
             }
 
-            stage("Build") {
-                steps {
-                    script {
-                        gv.testApp()
-                    }   
-                }
-                
+            steps {
+                script {
+                    gv.testApp()
+                }   
             }
         }
 
