@@ -31,7 +31,11 @@ pipeline {
             }
             steps {
                 script {
-                    echo "Deploying application..."
+                	def dockerComposeCmd = "docker compose -f docker-compose.yml up --detach"
+                    sshagent(['ec2-server-key']) {
+                        sh "scp docker-compose.yml ubuntu@3.91.86.65:/home/ubuntu"
+                    	sh "ssh -o StrictHostKeyChecking=no ubuntu@3.91.86.65 ${dockerComposeCmd}"
+                    }
                 }
             }
         }
