@@ -24,11 +24,6 @@ pipeline {
         }
 
         stage("deploy") {
-            when {
-                expression {
-                    BRANCH_NAME == 'master'
-                }
-            }
             steps {
                 script {
                     def dockerCmd = 'docker run -d -p 3080:3080 fnjauke/my-form-app:1.1'
