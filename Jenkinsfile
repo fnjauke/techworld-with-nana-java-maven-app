@@ -24,11 +24,6 @@ pipeline {
         }
 
         stage("deploy") {
-            when {
-                expression {
-                    BRANCH_NAME == 'master'
-                }
-            }
             steps {
                 script {
                 	def dockerComposeCmd = "docker compose -f docker-compose.yml up --detach"
